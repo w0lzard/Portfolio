@@ -9,7 +9,7 @@ export function Projects() {
         </div>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
 
         <!-- Dokusho -->
         <div class="project-card reveal reveal-delay-1">

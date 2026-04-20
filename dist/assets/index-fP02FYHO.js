@@ -22,7 +22,7 @@
     </div>
 </nav>
   `}function b(){return`
-<section style="min-height:100vh;display:flex;align-items:center;padding:8rem 1.5rem 5rem;max-width:1280px;margin:0 auto;position:relative;gap:4rem;" class="flex-col md:flex-row">
+<section style="min-height:100vh;max-width:1280px;margin:0 auto;position:relative;" class="flex flex-col md:flex-row items-center py-24 md:py-32 px-6 gap-10 md:gap-16">
 
     <!-- Glow blobs -->
     <div class="glow-blob" style="width:600px;height:600px;background:rgba(0,0,0,.03);top:-100px;left:-200px;"></div>
@@ -37,7 +37,7 @@
             </div>
         </div>
 
-        <h1 style="font-size:clamp(3rem,6.5vw,6rem);font-weight:800;line-height:1.02;letter-spacing:-.03em;margin-bottom:2rem;">
+        <h1 style="font-size:clamp(2.5rem,8vw,6rem);font-weight:800;line-height:1.02;letter-spacing:-.03em;margin-bottom:2rem;">
             <span class="hero-word" style="animation-delay:.1s;display:block;">Multiplatform</span>
             <span class="hero-word" style="animation-delay:.22s;display:block;color:var(--accent);">App Developer</span>
             <span class="hero-word" style="animation-delay:.34s;display:block;font-style:italic;font-family:'DM Sans',sans-serif;font-weight:300;font-size:.55em;color:var(--muted);">from Gorakhpur, Uttar Pradesh, India.</span>
@@ -57,7 +57,7 @@
         </div>
 
         <!-- Quick stats row -->
-        <div class="hero-word" style="animation-delay:.7s;display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--border);">
+        <div class="hero-word grid grid-cols-2 lg:flex gap-6 lg:gap-10" style="animation-delay:.7s;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--border);">
             <div>
                 <div style="font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--accent);">2</div>
                 <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;letter-spacing:.04em;">KMP Apps</div>
@@ -128,7 +128,7 @@
     </div>
 </div>
   `}function x(){return`
-<section id="about" style="padding:7rem 1.5rem;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;" class="reveal">
+<section id="about" style="max-width:1280px;margin:0 auto;" class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center reveal py-16 px-6">
     <!-- Left: image -->
     <div style="position:relative;">
         <div style="border-radius:20px;overflow:hidden;aspect-ratio:4/5;position:relative;">
@@ -188,7 +188,7 @@
         </div>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
 
         <!-- Dokusho -->
         <div class="project-card reveal reveal-delay-1">
@@ -298,7 +298,7 @@
                     </div>
                     <span style="font-size:.78rem;color:var(--muted);background:var(--surface2);padding:.3rem .9rem;border-radius:99px;border:1px solid var(--border);height:fit-content;">Sept 2025 – Oct 2025</span>
                 </div>
-                <div style="margin-top:1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
                     <div style="background:var(--surface2);border-radius:12px;padding:1.2rem;">
                         <h5 style="font-weight:700;font-size:.95rem;margin-bottom:.5rem;color:var(--text);">Quizlet Learning Platform</h5>
                         <p style="font-size:.82rem;color:var(--muted);line-height:1.6;">Engineered quiz app supporting 500+ concurrent users with CRUD operations, real-time countdown timers, and instant scoring — reducing quiz abandonment by 25–30%.</p>

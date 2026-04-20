@@ -22,7 +22,7 @@ export function Experience() {
                     </div>
                     <span style="font-size:.78rem;color:var(--muted);background:var(--surface2);padding:.3rem .9rem;border-radius:99px;border:1px solid var(--border);height:fit-content;">Sept 2025 – Oct 2025</span>
                 </div>
-                <div style="margin-top:1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
                     <div style="background:var(--surface2);border-radius:12px;padding:1.2rem;">
                         <h5 style="font-weight:700;font-size:.95rem;margin-bottom:.5rem;color:var(--text);">Quizlet Learning Platform</h5>
                         <p style="font-size:.82rem;color:var(--muted);line-height:1.6;">Engineered quiz app supporting 500+ concurrent users with CRUD operations, real-time countdown timers, and instant scoring — reducing quiz abandonment by 25–30%.</p>

@@ -1,6 +1,6 @@
 export function About() {
   return `
-<section id="about" style="padding:7rem 1.5rem;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;" class="reveal">
+<section id="about" style="max-width:1280px;margin:0 auto;" class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center reveal py-16 px-6">
     <!-- Left: image -->
     <div style="position:relative;">
         <div style="border-radius:20px;overflow:hidden;aspect-ratio:4/5;position:relative;">

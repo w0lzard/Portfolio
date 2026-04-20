@@ -1,6 +1,6 @@
 export function Hero() {
   return `
-<section style="min-height:100vh;display:flex;align-items:center;padding:8rem 1.5rem 5rem;max-width:1280px;margin:0 auto;position:relative;gap:4rem;" class="flex-col md:flex-row">
+<section style="min-height:100vh;max-width:1280px;margin:0 auto;position:relative;" class="flex flex-col md:flex-row items-center py-24 md:py-32 px-6 gap-10 md:gap-16">
 
     <!-- Glow blobs -->
     <div class="glow-blob" style="width:600px;height:600px;background:rgba(0,0,0,.03);top:-100px;left:-200px;"></div>
@@ -15,7 +15,7 @@ export function Hero() {
             </div>
         </div>
 
-        <h1 style="font-size:clamp(3rem,6.5vw,6rem);font-weight:800;line-height:1.02;letter-spacing:-.03em;margin-bottom:2rem;">
+        <h1 style="font-size:clamp(2.5rem,8vw,6rem);font-weight:800;line-height:1.02;letter-spacing:-.03em;margin-bottom:2rem;">
             <span class="hero-word" style="animation-delay:.1s;display:block;">Multiplatform</span>
             <span class="hero-word" style="animation-delay:.22s;display:block;color:var(--accent);">App Developer</span>
             <span class="hero-word" style="animation-delay:.34s;display:block;font-style:italic;font-family:'DM Sans',sans-serif;font-weight:300;font-size:.55em;color:var(--muted);">from Gorakhpur, Uttar Pradesh, India.</span>
@@ -35,7 +35,7 @@ export function Hero() {
         </div>
 
         <!-- Quick stats row -->
-        <div class="hero-word" style="animation-delay:.7s;display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--border);">
+        <div class="hero-word grid grid-cols-2 lg:flex gap-6 lg:gap-10" style="animation-delay:.7s;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--border);">
             <div>
                 <div style="font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--accent);">2</div>
                 <div style="font-size:.78rem;color:var(--muted);margin-top:.2rem;letter-spacing:.04em;">KMP Apps</div>
