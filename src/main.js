@@ -14,9 +14,13 @@ import { Experience } from './components/Experience.js';
 import { Skills } from './components/Skills.js';
 import { Contact } from './components/Contact.js';
 import { Footer } from './components/Footer.js';
+import { initParticles } from './components/Particles.js';
 
 
 document.querySelector('#app').innerHTML = `
+
+<!-- Background Particles Canvas -->
+<canvas id="particles-canvas"></canvas>
 
 <!-- Custom Cursor -->
 <div class="cursor" id="cursor"></div>
@@ -33,6 +37,9 @@ document.querySelector('#app').innerHTML = `
   ${Footer()}
 
 `;
+
+// Initialize Background Particles
+initParticles();
 
 
 // Cursor
