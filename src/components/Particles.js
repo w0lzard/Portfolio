@@ -17,6 +17,10 @@ export function initParticles() {
     const connectionDist = 110;
     const mouseRadius = 160;
 
+    // Shooting stars settings
+    let shootingStars = [];
+    const maxShootingStars = 4;
+
     // Mouse coordinates tracking
     const mouse = {
         x: null,
@@ -140,6 +144,99 @@ export function initParticles() {
         }
     }
 
+    // ShootingStar Class Definition
+    class ShootingStar {
+        constructor() {
+            this.reset();
+        }
+
+        reset() {
+            // Spawn along top-right or right edge to slide down-left
+            if (Math.random() < 0.5) {
+                this.x = Math.random() * canvas.width * 0.8 + canvas.width * 0.2;
+                this.y = -50;
+            } else {
+                this.x = canvas.width + 50;
+                this.y = Math.random() * canvas.height * 0.5;
+            }
+            
+            this.speed = Math.random() * 6 + 5; // Fast, elegant movement
+            this.angle = Math.PI * 0.78 + (Math.random() - 0.5) * 0.08; // Diagonal fall angle (approx 140 deg)
+            this.vx = Math.cos(this.angle) * this.speed;
+            this.vy = Math.sin(this.angle) * this.speed;
+            
+            this.length = Math.random() * 90 + 70; // Trail length
+            this.thickness = Math.random() * 1.2 + 0.8; // Sleek and elegant
+            
+            this.alpha = 0; // Starts transparent, fades in, then fades out
+            this.fadeInSpeed = Math.random() * 0.04 + 0.04;
+            this.fadeOutSpeed = Math.random() * 0.015 + 0.01;
+            this.stage = 'fadein'; // 'fadein', 'moving', 'fadeout'
+            this.active = true;
+        }
+
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+
+            if (this.stage === 'fadein') {
+                this.alpha += this.fadeInSpeed;
+                if (this.alpha >= 1) {
+                    this.alpha = 1;
+                    this.stage = 'moving';
+                }
+            } else if (this.stage === 'moving') {
+                // Trigger fade out as it starts leaving screen or after travel
+                if (this.x < -this.length || this.y > canvas.height + this.length) {
+                    this.stage = 'fadeout';
+                }
+            } else if (this.stage === 'fadeout') {
+                this.alpha -= this.fadeOutSpeed;
+                if (this.alpha <= 0) {
+                    this.alpha = 0;
+                    this.active = false;
+                }
+            }
+            
+            // Hard boundary check to ensure no runaway shooting stars
+            if (this.x < -300 || this.y > canvas.height + 300) {
+                this.active = false;
+            }
+        }
+
+        draw() {
+            if (!this.active) return;
+
+            // Calculate tail position
+            const tailX = this.x - Math.cos(this.angle) * this.length;
+            const tailY = this.y - Math.sin(this.angle) * this.length;
+
+            // Create elegant linear gradient matching active theme colors
+            const gradient = ctx.createLinearGradient(this.x, this.y, tailX, tailY);
+            const r = Math.round(activeColor.r);
+            const g = Math.round(activeColor.g);
+            const b = Math.round(activeColor.b);
+
+            gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${this.alpha * 0.85})`);
+            gradient.addColorStop(0.12, `rgba(${r}, ${g}, ${b}, ${this.alpha * 0.5})`);
+            gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
+
+            ctx.beginPath();
+            ctx.moveTo(this.x, this.y);
+            ctx.lineTo(tailX, tailY);
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = this.thickness;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+
+            // Glowing head
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.thickness * 1.3, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${this.alpha})`;
+            ctx.fill();
+        }
+    }
+
     function initParticlesArray() {
         particles = [];
         for (let i = 0; i < particleCount; i++) {
@@ -185,6 +282,21 @@ export function initParticles() {
         for (let i = 0; i < particles.length; i++) {
             particles[i].update();
             particles[i].draw();
+        }
+
+        // Randomly spawn shooting stars
+        if (shootingStars.length < maxShootingStars && Math.random() < 0.008) {
+            shootingStars.push(new ShootingStar());
+        }
+
+        // Update, draw, and filter active shooting stars
+        for (let i = shootingStars.length - 1; i >= 0; i--) {
+            const star = shootingStars[i];
+            star.update();
+            star.draw();
+            if (!star.active) {
+                shootingStars.splice(i, 1);
+            }
         }
 
         animationFrameId = requestAnimationFrame(animate);
